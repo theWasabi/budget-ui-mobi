@@ -1,1 +1,42 @@
-Category List
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Categories</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-icon name="swap-vertical" slot="start"></ion-icon>
+          <ion-select interface="popover" value="Name A-Z">
+            <ion-select-option value="Created at (newest)"> Created at (newest)</ion-select-option>
+            <ion-select-option value="Created at (oldest)"> Created at (oldest)</ion-select-option>
+            <ion-select-option value="Name A-Z"> Name A-Z</ion-select-option>
+            <ion-select-option value="Name Z-A"> Name Z-A</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-searchbar placeholder="Search"> </ion-searchbar>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item button="true">
+            <ion-label>Basic Item</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-infinite-scroll></ion-infinite-scroll>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="add"> </ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
