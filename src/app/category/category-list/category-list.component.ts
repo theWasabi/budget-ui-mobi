@@ -40,9 +40,11 @@ export class CategoryListComponent {
         this.loadCategories();
       });
   }
+
   ionViewDidLeave(): void {
     this.searchFormSubscription.unsubscribe();
   }
+
   private loadCategories(next: () => void = () => {}): void {
     if (!this.searchCriteria.name) delete this.searchCriteria.name;
     this.loading = true;
@@ -67,17 +69,23 @@ export class CategoryListComponent {
   ionViewDidEnter(): void {
     this.loadCategories();
   }
+
   loadNextCategoryPage($event: any) {
     this.searchCriteria.page++;
     this.loadCategories(() => ($event as InfiniteScrollCustomEvent).target.complete());
   }
+
   reloadCategories($event?: any): void {
     this.searchCriteria.page = 0;
     this.loadCategories(() => ($event ? ($event as RefresherCustomEvent).target.complete() : {}));
   }
+
   async openModal(category?: Category): Promise<void> {
-    const modal = await this.modalCtrl.create({ component: CategoryModalComponent });
-    await modal.present();
+    const modal = await this.modalCtrl.create({
+      component: CategoryModalComponent,
+      componentProps: { category: category ? { ...category } : {} },
+    });
+    modal.present();
     const { role } = await modal.onWillDismiss();
     if (role === 'refresh') this.reloadCategories();
   }
