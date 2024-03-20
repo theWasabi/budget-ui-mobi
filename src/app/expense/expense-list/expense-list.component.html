@@ -1,1 +1,82 @@
-Expense List
+<!-- ------ -->
+<!-- Header -->
+<!-- ------ -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Expenses</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- ------- -->
+<!-- Content -->
+<!-- ------- -->
+<ion-content>
+  <!-- Search & sort -->
+  <ion-grid class="ion-padding">
+    <ion-row>
+      <ion-col size="12" size-sm="4">
+        <ion-item>
+          <ion-icon name="swap-vertical" slot="start"></ion-icon>
+          <ion-select interface="popover" value="Name (A-Z)">
+            <ion-select-option>Created at (newest first)</ion-select-option>
+            <ion-select-option>Created at (oldest first)</ion-select-option>
+            <ion-select-option>Name (A-Z)</ion-select-option>
+            <ion-select-option>Name (Z-A)</ion-select-option>
+            <ion-select-option>Date (newest first)</ion-select-option>
+            <ion-select-option>Date (oldest first)</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" size-sm="4">
+        <ion-item>
+          <ion-icon name="pricetag" slot="start"></ion-icon>
+          <ion-select interface="popover" placeholder="Category" multiple="true"></ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" size-sm="4">
+        <ion-item>
+          <ion-icon name="search" slot="start"></ion-icon>
+          <ion-input maxlength="40" placeholder="Search" [clearInput]="true"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Expense list -->
+  <ion-list inset="true">
+    <!-- Expenses -->
+    <ion-item button="true" [detail]="true" (click)="openModal()">
+      <ion-icon name="alert-circle-outline" slot="start"></ion-icon>
+      <ion-label> No expenses found</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Create fab button -->
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="openModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+<ion-footer class="toolbar-title-default md in-toolbar hydrated">
+  <ion-toolbar class="toolbar-title-default md in-toolbar hydrated">
+    <ion-buttons slot="start" class="buttons-first-slot sc-ion-buttons-md-h sc-ion-buttons-md-s md hydrated">
+      <ion-button
+        class="md button button-clear in-toolbar in-buttons button-has-icon-only ion-cultivatable ion-focusable hydrated"
+      >
+        <ion-icon slot="icon-only" name="arrow-back"> </ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="md title-default hydrated"> March 2024 </ion-title>
+    <ion-buttons slot="start" class="buttons-last-slot sc-ion-buttons-md-h sc-ion-buttons-md-s md hydrated">
+      <ion-button
+        class="md button button-clear in-toolbar in-buttons button-has-icon-only ion-cultivatable ion-focusable hydrated"
+      >
+        <ion-icon slot="icon-only" name="arrow-forward"> </ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
