@@ -65,14 +65,16 @@
   <ion-toolbar class="toolbar-title-default md in-toolbar hydrated">
     <ion-buttons slot="start" class="buttons-first-slot sc-ion-buttons-md-h sc-ion-buttons-md-s md hydrated">
       <ion-button
+        (click)="addMonths(-1)"
         class="md button button-clear in-toolbar in-buttons button-has-icon-only ion-cultivatable ion-focusable hydrated"
       >
         <ion-icon slot="icon-only" name="arrow-back"> </ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title class="md title-default hydrated"> March 2024 </ion-title>
-    <ion-buttons slot="start" class="buttons-last-slot sc-ion-buttons-md-h sc-ion-buttons-md-s md hydrated">
+    <ion-title class="md title-default hydrated"> {{ date | date: 'MMMM yyyy' }} </ion-title>
+    <ion-buttons slot="end" class="buttons-last-slot sc-ion-buttons-md-h sc-ion-buttons-md-s md hydrated">
       <ion-button
+        (click)="addMonths(+1)"
         class="md button button-clear in-toolbar in-buttons button-has-icon-only ion-cultivatable ion-focusable hydrated"
       >
         <ion-icon slot="icon-only" name="arrow-forward"> </ion-icon>
