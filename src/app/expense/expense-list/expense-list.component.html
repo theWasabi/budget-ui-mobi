@@ -24,31 +24,32 @@
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
   </ion-infinite-scroll>
   <!-- Search & sort -->
-  <ion-grid class="ion-padding">
+  <ion-grid class="ion-padding" [formGroup]="searchForm">
     <ion-row>
       <ion-col size="12" size-sm="4">
         <ion-item>
           <ion-icon name="swap-vertical" slot="start"></ion-icon>
-          <ion-select interface="popover" value="Name (A-Z)">
-            <ion-select-option>Created at (newest first)</ion-select-option>
-            <ion-select-option>Created at (oldest first)</ion-select-option>
-            <ion-select-option>Name (A-Z)</ion-select-option>
-            <ion-select-option>Name (Z-A)</ion-select-option>
-            <ion-select-option>Date (newest first)</ion-select-option>
-            <ion-select-option>Date (oldest first)</ion-select-option>
+          <ion-select interface="popover" formControlName="sort">
+            <ion-select-option *ngFor="let sortOption of sortOptions" [value]="sortOption.value">
+              {{ sortOption.label }}
+            </ion-select-option>
           </ion-select>
         </ion-item>
       </ion-col>
       <ion-col size="12" size-sm="4">
         <ion-item>
           <ion-icon name="pricetag" slot="start"></ion-icon>
-          <ion-select interface="popover" placeholder="Category" multiple="true"></ion-select>
+          <ion-select placeholder="Category" interface="popover" multiple="true" formControlName="categoryIds">
+            <ion-select-option role="option" *ngFor="let category of categories" [value]="category.id">
+              {{ category.name }}
+            </ion-select-option>
+          </ion-select>
         </ion-item>
       </ion-col>
       <ion-col size="12" size-sm="4">
         <ion-item>
           <ion-icon name="search" slot="start"></ion-icon>
-          <ion-input maxlength="40" placeholder="Search" [clearInput]="true"></ion-input>
+          <ion-input placeholder="Search" [clearInput]="true" formControlName="name"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
